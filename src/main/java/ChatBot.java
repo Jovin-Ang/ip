@@ -7,15 +7,18 @@ import java.util.Scanner;
  */
 public class ChatBot {
     /**
-     * Represents the name of the chatbot.
-     * This variable stores the name associated with the chatbot instance.
+     * The name of the chatbot.
      */
     private final String name;
     /**
-     * Represents a Scanner object for reading user input.
-     * This variable is used to handle input during the chatbot's interactions.
+     * A Scanner object for reading user input.
      */
-    private Scanner scanner;
+    private final Scanner scanner;
+    /**
+     * A TaskList instance, which is used to organize,
+     * store, and manipulate tasks within the chatbot application.
+     */
+    private final TaskList tasklist = new TaskList();
 
     /**
      * A constant string used to visually separate sections of text output.
@@ -39,12 +42,25 @@ public class ChatBot {
      * Initiates the chatbot's interaction with the user.
      */
     public void run() {
-        this.send("Hi! I'm " + this.name + "\n How can I you today?");
-        String input = this.getInput();
-        while (!input.equals("bye")) {
-            this.send(input);
-            input = this.getInput();
+        // Greet user
+        this.send("Hi! I'm " + this.name + "\nHow can I you today?");
+
+        boolean chaton = true;
+        // Main loop
+        while (chaton) {
+            String input = this.getInput();
+
+            switch (input) {
+                case "list" -> this.send(tasklist.toString());
+                case "quit" -> chaton = false;
+                default -> {
+                    this.tasklist.addTask(input);
+                    this.send("Added task: " + input);
+                }
+            }
         }
+
+        // Goodbye to user
         this.send("Bye :) Hope to see you again soon!");
     }
 
@@ -54,7 +70,7 @@ public class ChatBot {
      * @param message The message to be printed.
      */
     private void send(String message) {
-        System.out.println(SEPARATOR + "\n " + message + "\n" + SEPARATOR);
+        System.out.println(SEPARATOR + "\n" + message + "\n" + SEPARATOR);
     }
 
     /**
