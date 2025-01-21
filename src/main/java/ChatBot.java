@@ -39,8 +39,13 @@ public class ChatBot {
      * Initiates the chatbot's interaction with the user.
      */
     public void run() {
-        this.send("Hello! I'm " + this.name + "\n What can I do for you?");
-        this.send("Bye. Hope to see you again soon!");
+        this.send("Hi! I'm " + this.name + "\n How can I you today?");
+        String input = this.getInput();
+        while (!input.equals("bye")) {
+            this.send(input);
+            input = this.getInput();
+        }
+        this.send("Bye :) Hope to see you again soon!");
     }
 
     /**
@@ -50,5 +55,15 @@ public class ChatBot {
      */
     private void send(String message) {
         System.out.println(SEPARATOR + "\n " + message + "\n" + SEPARATOR);
+    }
+
+    /**
+     * Reads and returns a line of input from the user.
+     *
+     * @return A string representing the user's input from the console.
+     */
+    private String getInput() {
+        System.out.print("> ");
+        return scanner.nextLine();
     }
 }
