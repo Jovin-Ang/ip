@@ -38,6 +38,10 @@ public class TodoCommand extends Command {
      */
     @Override
     public void execute(String arguments) {
+        if (arguments.isEmpty()) {
+            ioHandler.send("Uh oh, task should not be empty!");
+            return;
+        }
         ToDoTask newToDoTask = new ToDoTask(arguments);
         taskList.addTask(newToDoTask);
         ioHandler.send("Got it. I've added this task:\n  "

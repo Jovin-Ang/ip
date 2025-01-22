@@ -38,7 +38,15 @@ public class DeadlineCommand extends Command {
      */
     @Override
     public void execute(String arguments) {
+        if (arguments.isEmpty()) {
+            ioHandler.send("Uh oh, task should not be empty!");
+            return;
+        }
         String[] parts = arguments.split(" /", 2);
+        if (parts.length != 2) {
+            ioHandler.send("Expected 2 arguments, only got " + parts.length + ".");
+            return;
+        }
         DeadlineTask newDeadlineTask = new DeadlineTask(parts[0], parts[1]);
         taskList.addTask(newDeadlineTask);
         ioHandler.send("Got it. I've added this task:\n  "

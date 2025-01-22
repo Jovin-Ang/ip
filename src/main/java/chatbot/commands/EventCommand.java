@@ -38,7 +38,15 @@ public class EventCommand extends Command {
      */
     @Override
     public void execute(String arguments) {
+        if (arguments.isEmpty()) {
+            ioHandler.send("Uh oh, task should not be empty!");
+            return;
+        }
         String[] parts = arguments.split(" /", 3);
+        if (parts.length != 3) {
+            ioHandler.send("Expected 3 arguments, only got " + parts.length + ".");
+            return;
+        }
         EventTask newEventTask = new EventTask(parts[0], parts[1], parts[2]);
         taskList.addTask(newEventTask);
         ioHandler.send("Got it. I've added this task:\n  "
