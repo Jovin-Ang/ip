@@ -7,7 +7,7 @@ import chatbot.ChatBot;
  *
  * @author Jovin Ang
  */
-public class QuitCommand implements Command {
+public class QuitCommand extends Command {
     /**
      * A reference to a ChatBot instance
      */

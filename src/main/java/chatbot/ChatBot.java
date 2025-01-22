@@ -51,10 +51,13 @@ public class ChatBot implements IoHandler {
     public ChatBot(String name, Scanner scanner) {
         this.name = name;
         this.scanner = scanner;
-        commands.put("add", new AddCommand(this, taskList));
+        commands.put("todo", new TodoCommand(this, taskList));
+        commands.put("deadline", new DeadlineCommand(this, taskList));
+        commands.put("event", new EventCommand(this, taskList));
         commands.put("list", new ListCommand(this, taskList));
         commands.put("mark", new MarkCommand(this, taskList));
         commands.put("unmark", new UnmarkCommand(this, taskList));
+        commands.put("help", new HelpCommand(this));
         commands.put("quit", new QuitCommand(this));
     }
 
@@ -63,7 +66,7 @@ public class ChatBot implements IoHandler {
      */
     public void run() {
         // Greet user
-        this.send("Hi! I'm " + this.name + "\nHow can I help you today?\n(\"quit\" to exit the chatbot)");
+        this.send("Hi! I'm " + this.name + "\nHow can I help you today?\n(\"help\" to see what I can do)");
 
         while (this.isRunning) {
             String input = this.getInput();

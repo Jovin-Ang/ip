@@ -9,7 +9,7 @@ import chatbot.TaskList;
  *
  * @author Jovin Ang
  */
-public class MarkCommand implements Command {
+public class MarkCommand extends Command {
     /**
      * Reference to an IoHandler instance which Handles input and output operations for
      * the command.
@@ -44,8 +44,8 @@ public class MarkCommand implements Command {
             return;
         }
         try {
-            int taskNumber = Integer.parseInt(arguments) - 1;
-            taskList.completeTask(taskNumber);
+            int taskNumber = Integer.parseInt(arguments);
+            taskList.completeTask(taskNumber - 1);
             ioHandler.send("Marked task " + taskNumber + " as completed.");
         } catch (IllegalTaskStateChangeException e) {
             ioHandler.send(e.getMessage());

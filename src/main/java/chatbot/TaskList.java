@@ -1,5 +1,7 @@
 package chatbot;
 
+import chatbot.tasks.Task;
+
 import java.util.ArrayList;
 
 /**
@@ -21,8 +23,13 @@ public class TaskList {
         this.tasks = new ArrayList<>();
     }
 
-    public void createTask(String taskName) {
-        tasks.add(new Task(taskName));
+    /**
+     * Adds a task to the task list.
+     *
+     * @param task The task to be added to the list.
+     */
+    public void addTask(Task task) {
+        tasks.add(task);
     }
 
     /**

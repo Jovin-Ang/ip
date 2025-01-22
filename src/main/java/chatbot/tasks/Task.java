@@ -1,12 +1,14 @@
-package chatbot;
+package chatbot.tasks;
+
+import chatbot.IllegalTaskStateChangeException;
 
 /**
- * The chatbot.Task class encapsulates a task.
- * Each task has a name.
+ * The Task class is an abstract class that encapsulates a task. A task encapsulates its
+ * name and completion state. Tasks can be marked as completed or incomplete.
  *
  * @author Jovin Ang
  */
-public class Task {
+public abstract class Task {
     /**
      * Identifier or label of the task.
      */

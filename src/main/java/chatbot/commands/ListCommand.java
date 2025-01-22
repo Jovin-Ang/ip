@@ -10,7 +10,7 @@ import chatbot.TaskList;
  *
  * @author Jovin Ang
  */
-public class ListCommand implements Command {
+public class ListCommand extends Command {
     /**
      * Reference to an IoHandler instance which Handles input and output operations for
      * the command.
