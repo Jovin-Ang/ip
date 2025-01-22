@@ -8,6 +8,7 @@ event my third task /friday 9pm /friday 10pm
 list
 unmark 2
 mark 2
+list
 mark 2
 unmark 2
 quit
