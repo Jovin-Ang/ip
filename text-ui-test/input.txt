@@ -2,6 +2,7 @@ help
 list
 mark 1
 unmark 1
+delete 1
 todo my first task
 deadline my second task /by friday
 event my third task /friday 9pm /friday 10pm
@@ -11,4 +12,9 @@ mark 2
 list
 mark 2
 unmark 2
+delete 2
+list
+mark 111
+unmark 111
+delete 111
 quit
