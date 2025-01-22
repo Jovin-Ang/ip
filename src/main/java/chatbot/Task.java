@@ -61,7 +61,7 @@ public class Task {
      * @return A string representation of the task with its completion status.
      */
     public String getDetails() {
-        return "[" + (this.isCompleted ? "X" : " ") + "] " + this.toString();
+        return "[" + (this.isCompleted ? "X" : " ") + "] " + this;
     }
 
     /**
