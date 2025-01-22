@@ -42,6 +42,7 @@ public class HelpCommand extends Command {
                 `list` shows the tasklist
                 `mark <task number>` marks task number as done
                 `unmark <task number>` unmarks task number as done
+                `delete <task number>` deletes task number from the tasklist
                 `quit` bye bye :(
                 """);
     }

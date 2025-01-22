@@ -33,18 +33,33 @@ public class TaskList {
     }
 
     /**
-     * Mark a task as complete.
+     * Removes and returns the task at the specified index from the task list.
      *
-     * @param i The index of the task to complete.
+     * @param i The index of the task to be removed.
+     * @return The task that was removed from the list.
+     * @throws IndexOutOfBoundsException If the specified index is out of bounds.
+     */
+    public Task removeTask(int i) throws IndexOutOfBoundsException {
+        return tasks.remove(i);
+    }
+
+    /**
+     * Marks the task at the specified index as completed.
+     *
+     * @param i The index of the task to be marked as completed.
+     * @throws IllegalTaskStateChangeException If the task has already been marked as completed.
+     * @throws IndexOutOfBoundsException If the specified index is out of bounds in the task list.
      */
     public void completeTask(int i) throws IllegalTaskStateChangeException, IndexOutOfBoundsException {
         this.tasks.get(i).complete();
     }
 
     /**
-     * Mark a task as incomplete.
+     * Marks the task at the specified index as incomplete.
      *
-     * @param i The index of the task to incomplete.
+     * @param i The index of the task to be marked as incomplete.
+     * @throws IllegalTaskStateChangeException If the task is already in the incomplete state.
+     * @throws IndexOutOfBoundsException If the specified index is out of bounds in the task list.
      */
     public void incompleteTask(int i) throws IllegalTaskStateChangeException, IndexOutOfBoundsException {
         this.tasks.get(i).incomplete();

@@ -57,6 +57,7 @@ public class ChatBot implements IoHandler {
         commands.put("list", new ListCommand(this, taskList));
         commands.put("mark", new MarkCommand(this, taskList));
         commands.put("unmark", new UnmarkCommand(this, taskList));
+        commands.put("delete", new DeleteCommand(this, taskList));
         commands.put("help", new HelpCommand(this));
         commands.put("quit", new QuitCommand(this));
     }
