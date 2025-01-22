@@ -3,6 +3,11 @@ list
 mark 1
 unmark 1
 delete 1
+todo
+deadline
+event
+deadline hello
+event hello
 todo my first task
 deadline my second task /by friday
 event my third task /friday 9pm /friday 10pm
