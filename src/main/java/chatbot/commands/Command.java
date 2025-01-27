@@ -1,5 +1,7 @@
 package chatbot.commands;
 
+import chatbot.exception.InvalidCommandSyntaxException;
+
 /**
  * Represents an abstract base class for commands that can be executed with provided arguments.
  * Subclasses must implement specific command behavior by overriding the execute method.
@@ -38,8 +40,9 @@ public abstract class Command {
      * The behavior of this method should be implemented by specific command classes.
      *
      * @param arguments The arguments passed to the command for execution.
+     * @throws InvalidCommandSyntaxException If the command arguments are in an incorrect format.
      */
-    public abstract void execute(String arguments);
+    public abstract void execute(String arguments) throws InvalidCommandSyntaxException;
 
     /**
      * Returns the usage information for the command.

@@ -1,4 +1,4 @@
-package chatbot.tasks;
+package chatbot.data.tasks;
 
 public class ToDoTask extends Task {
     public ToDoTask(String task) {

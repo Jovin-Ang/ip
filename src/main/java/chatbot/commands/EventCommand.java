@@ -1,8 +1,9 @@
 package chatbot.commands;
 
-import chatbot.IoHandler;
-import chatbot.TaskList;
-import chatbot.tasks.EventTask;
+import chatbot.exception.InvalidCommandSyntaxException;
+import chatbot.ui.IoHandler;
+import chatbot.data.TaskList;
+import chatbot.data.tasks.EventTask;
 
 /**
  * Represents a command for adding a new event task to a TaskList.
@@ -36,17 +37,17 @@ public class EventCommand extends Command {
      * Executes the event command to create a new event task and add it to the associated TaskList.
      *
      * @param arguments The description of the task to be added.
+     * @throws InvalidCommandSyntaxException If the task description, start date and/or
+     *                                       end date is empty/invalid.
      */
     @Override
-    public void execute(String arguments) {
+    public void execute(String arguments) throws InvalidCommandSyntaxException {
         if (arguments.isEmpty()) {
-            ioHandler.send("Uh oh, task should not be empty!");
-            return;
+            throw new InvalidCommandSyntaxException("Uh oh, task should not be empty!");
         }
         String[] parts = arguments.split(" /", 3);
         if (parts.length != 3) {
-            ioHandler.send("Expected 3 arguments, only got " + parts.length + ".");
-            return;
+            throw new InvalidCommandSyntaxException("Expected 3 arguments, only got " + parts.length + ".");
         }
         EventTask newEventTask = new EventTask(parts[0], parts[1], parts[2]);
         taskList.addTask(newEventTask);

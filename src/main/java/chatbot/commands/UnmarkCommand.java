@@ -1,8 +1,9 @@
 package chatbot.commands;
 
 import chatbot.exception.IllegalTaskStateChangeException;
-import chatbot.IoHandler;
-import chatbot.TaskList;
+import chatbot.exception.InvalidCommandSyntaxException;
+import chatbot.ui.IoHandler;
+import chatbot.data.TaskList;
 
 /**
  * Represents a command that marks a task in a TaskList as incomplete.
@@ -37,9 +38,10 @@ public class UnmarkCommand extends Command {
      * Sends appropriate confirmation or error messages via the associated IoHandler.
      *
      * @param arguments The task number to be marked as incomplete.
+     * @throws InvalidCommandSyntaxException If the task number is invalid.
      */
     @Override
-    public void execute(String arguments) {
+    public void execute(String arguments) throws InvalidCommandSyntaxException {
         if (taskList.getTotalTasks() == 0) {
             ioHandler.send("No tasks to unmark.");
             return;
@@ -53,7 +55,7 @@ public class UnmarkCommand extends Command {
         } catch (IndexOutOfBoundsException e) {
             ioHandler.send("Invalid task number. Ensure the number is between 1 and " + taskList.getTotalTasks() + ".");
         } catch (Exception e) {
-            ioHandler.send("Invalid task number. Use: unmark <taskNumber>");
+            throw new InvalidCommandSyntaxException("Invalid task number.");
         }
     }
 }

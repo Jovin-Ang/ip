@@ -1,7 +1,7 @@
 package chatbot.commands;
 
-import chatbot.IoHandler;
-import chatbot.TaskList;
+import chatbot.ui.IoHandler;
+import chatbot.data.TaskList;
 
 /**
  * Represents a command for listing tasks in a TaskList.

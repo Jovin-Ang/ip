@@ -1,4 +1,4 @@
-package chatbot.tasks;
+package chatbot.data.tasks;
 
 public class DeadlineTask extends Task {
     private final String deadline;

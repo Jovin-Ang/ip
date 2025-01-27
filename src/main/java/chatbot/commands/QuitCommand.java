@@ -1,6 +1,6 @@
 package chatbot.commands;
 
-import chatbot.ChatBot;
+import chatbot.ui.ChatBot;
 
 /**
  * Represents a command that terminates the chatbot gracefully.

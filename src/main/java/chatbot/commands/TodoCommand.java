@@ -1,8 +1,9 @@
 package chatbot.commands;
 
-import chatbot.IoHandler;
-import chatbot.TaskList;
-import chatbot.tasks.ToDoTask;
+import chatbot.exception.InvalidCommandSyntaxException;
+import chatbot.ui.IoHandler;
+import chatbot.data.TaskList;
+import chatbot.data.tasks.ToDoTask;
 
 /**
  * Represents a command for adding a new todotask to a TaskList.
@@ -36,12 +37,12 @@ public class TodoCommand extends Command {
      * Executes the todocommand to create a new todotask and add it to the associated TaskList.
      *
      * @param arguments The description of the task to be added.
+     * @throws InvalidCommandSyntaxException If the task description is empty.
      */
     @Override
-    public void execute(String arguments) {
+    public void execute(String arguments) throws InvalidCommandSyntaxException {
         if (arguments.isEmpty()) {
-            ioHandler.send("Uh oh, task should not be empty!");
-            return;
+            throw new InvalidCommandSyntaxException("Uh oh, task should not be empty!");
         }
         ToDoTask newToDoTask = new ToDoTask(arguments);
         taskList.addTask(newToDoTask);

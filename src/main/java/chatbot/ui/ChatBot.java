@@ -1,6 +1,8 @@
-package chatbot;
+package chatbot.ui;
 
 import chatbot.commands.*;
+import chatbot.data.TaskList;
+import chatbot.exception.InvalidCommandSyntaxException;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -28,7 +30,7 @@ public class ChatBot implements IoHandler {
      */
     private final Scanner scanner;
     /**
-     * A chatbot.TaskList instance, which is used to organize,
+     * A TaskList instance, which is used to organize,
      * store, and manipulate tasks within the chatbot application.
      */
     private final TaskList taskList = new TaskList();
@@ -87,7 +89,11 @@ public class ChatBot implements IoHandler {
         // Execute command if it exists, or handle unknown command
         Command cmd = commands.get(command);
         if (cmd != null) {
-            cmd.execute(arguments);
+            try {
+                cmd.execute(arguments);
+            } catch (InvalidCommandSyntaxException e) {
+                this.send("Invalid command format: " + e.getMessage() + "\nUsage: " + cmd.getCommandUsage());
+            }
         } else {
             this.send("Sorry. I don't understand, please try again.");
         }

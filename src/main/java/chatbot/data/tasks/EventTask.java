@@ -1,4 +1,4 @@
-package chatbot.tasks;
+package chatbot.data.tasks;
 
 public class EventTask extends Task {
     private final String startTime;

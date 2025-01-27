@@ -28,19 +28,24 @@ ____________________________________________________________
 No tasks to delete.
 ____________________________________________________________
 > ____________________________________________________________
-Uh oh, task should not be empty!
+Invalid command format: Uh oh, task should not be empty!
+Usage: `todo <task>` adds a task to the tasklist
 ____________________________________________________________
 > ____________________________________________________________
-Uh oh, task should not be empty!
+Invalid command format: Uh oh, task should not be empty!
+Usage: `deadline <task> /<by when>` adds a deadline task to the tasklist
 ____________________________________________________________
 > ____________________________________________________________
-Uh oh, task should not be empty!
+Invalid command format: Uh oh, task should not be empty!
+Usage: `event <task> /<start> /<end>` adds an event task to the tasklist
 ____________________________________________________________
 > ____________________________________________________________
-Expected 2 arguments, only got 1.
+Invalid command format: Expected 2 arguments, only got 1.
+Usage: `deadline <task> /<by when>` adds a deadline task to the tasklist
 ____________________________________________________________
 > ____________________________________________________________
-Expected 3 arguments, only got 1.
+Invalid command format: Expected 3 arguments, only got 1.
+Usage: `event <task> /<start> /<end>` adds an event task to the tasklist
 ____________________________________________________________
 > ____________________________________________________________
 Got it. I've added this task:
