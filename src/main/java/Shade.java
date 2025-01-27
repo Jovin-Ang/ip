@@ -15,6 +15,9 @@ public class Shade {
         // Create chatbot
         ChatBot shade = new ChatBot("Shade", scanner);
 
+        // Initialize the chatbot
+        shade.init();
+
         // Run the chatbot
         shade.run();
 
