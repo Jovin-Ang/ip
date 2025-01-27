@@ -27,6 +27,7 @@ public class EventCommand extends Command {
      * @param ioHandler The IoHandler instance used to handle input and output operations.
      */
     public EventCommand(IoHandler ioHandler, TaskList taskList) {
+        super("event", "adds an event task to the tasklist", "event <task> /<start> /<end>");
         this.ioHandler = ioHandler;
         this.taskList = taskList;
     }

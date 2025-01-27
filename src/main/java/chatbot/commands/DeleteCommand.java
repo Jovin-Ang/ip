@@ -27,6 +27,7 @@ public class DeleteCommand extends Command {
      * @param ioHandler The IoHandler instance used to handle input and output operations.
      */
     public DeleteCommand(IoHandler ioHandler, TaskList taskList) {
+        super("delete", "deletes a task from the tasklist", "delete <task number>");
         this.ioHandler = ioHandler;
         this.taskList = taskList;
     }

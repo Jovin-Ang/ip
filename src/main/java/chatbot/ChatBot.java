@@ -2,7 +2,7 @@ package chatbot;
 
 import chatbot.commands.*;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -35,7 +35,7 @@ public class ChatBot implements IoHandler {
     /**
      * A map that associates command names with their respective command implementations.
      */
-    private final Map<String, Command> commands = new HashMap<>();
+    private final Map<String, Command> commands = new LinkedHashMap<>();
     /**
      * Indicates whether the chatbot is currently running.
      * Used to manage the state of the chatbot's main operation loop.
@@ -51,6 +51,8 @@ public class ChatBot implements IoHandler {
     public ChatBot(String name, Scanner scanner) {
         this.name = name;
         this.scanner = scanner;
+        commands.put("help", new HelpCommand(this, commands));
+        commands.put("quit", new QuitCommand(this));
         commands.put("todo", new TodoCommand(this, taskList));
         commands.put("deadline", new DeadlineCommand(this, taskList));
         commands.put("event", new EventCommand(this, taskList));
@@ -58,8 +60,6 @@ public class ChatBot implements IoHandler {
         commands.put("mark", new MarkCommand(this, taskList));
         commands.put("unmark", new UnmarkCommand(this, taskList));
         commands.put("delete", new DeleteCommand(this, taskList));
-        commands.put("help", new HelpCommand(this));
-        commands.put("quit", new QuitCommand(this));
     }
 
     /**

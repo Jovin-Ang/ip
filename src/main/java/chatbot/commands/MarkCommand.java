@@ -1,6 +1,6 @@
 package chatbot.commands;
 
-import chatbot.IllegalTaskStateChangeException;
+import chatbot.exception.IllegalTaskStateChangeException;
 import chatbot.IoHandler;
 import chatbot.TaskList;
 
@@ -27,6 +27,7 @@ public class MarkCommand extends Command {
      * @param ioHandler The IoHandler instance used to handle input and output operations.
      */
     public MarkCommand(IoHandler ioHandler, TaskList taskList) {
+        super("mark", "marks a task as done", "mark <task number>");
         this.ioHandler = ioHandler;
         this.taskList = taskList;
     }

@@ -1,6 +1,6 @@
 package chatbot.commands;
 
-import chatbot.IllegalTaskStateChangeException;
+import chatbot.exception.IllegalTaskStateChangeException;
 import chatbot.IoHandler;
 import chatbot.TaskList;
 
@@ -27,6 +27,7 @@ public class UnmarkCommand extends Command {
      * @param ioHandler The IoHandler instance used to handle input and output operations.
      */
     public UnmarkCommand(IoHandler ioHandler, TaskList taskList) {
+        super("unmark", "unmarks a task as done", "unmark <task number>");
         this.ioHandler = ioHandler;
         this.taskList = taskList;
     }

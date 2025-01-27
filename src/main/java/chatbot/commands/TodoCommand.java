@@ -27,6 +27,7 @@ public class TodoCommand extends Command {
      * @param ioHandler The IoHandler instance used to handle input and output operations.
      */
     public TodoCommand(IoHandler ioHandler, TaskList taskList) {
+        super("todo", "adds a task to the tasklist", "todo <task>");
         this.ioHandler = ioHandler;
         this.taskList = taskList;
     }

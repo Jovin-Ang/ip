@@ -2,6 +2,8 @@ package chatbot.commands;
 
 import chatbot.IoHandler;
 
+import java.util.Map;
+
 /**
  * Represents a command that provides a list of available commands
  * and their descriptions to the user.
@@ -14,14 +16,20 @@ public class HelpCommand extends Command {
      * the command.
      */
     private final IoHandler ioHandler;
+    /**
+     * A map containing the available commands
+     */
+    private final Map<String, Command> commands;
 
     /**
      * Constructs a HelpCommand with the specified IoHandler.
      *
      * @param ioHandler The IoHandler instance used to handle input and output operations.
      */
-    public HelpCommand(IoHandler ioHandler) {
+    public HelpCommand(IoHandler ioHandler, Map<String, Command> commands) {
+        super("help", "shows this message", "help");
         this.ioHandler = ioHandler;
+        this.commands = commands;
     }
 
     /**
@@ -32,18 +40,10 @@ public class HelpCommand extends Command {
      */
     @Override
     public void execute(String arguments) {
-        ioHandler.send(
-                """
-                Here is what I can do:
-                `help` shows this message
-                `todo <task>` adds a task to the tasklist
-                `deadline <task> /<by when>` adds a deadline task to the tasklist
-                `event <task> /<start /<end>` adds an event task to the tasklist
-                `list` shows the tasklist
-                `mark <task number>` marks task number as done
-                `unmark <task number>` unmarks task number as done
-                `delete <task number>` deletes task number from the tasklist
-                `quit` bye bye :(
-                """);
+        ioHandler.send("Here is what I can do:\n"
+                + commands.values().stream()
+                .map(Command::getCommandUsage)
+                .reduce((s1, s2) -> s1 + "\n" + s2)
+                .orElse(">> Opps, no commands available <<"));
     }
 }

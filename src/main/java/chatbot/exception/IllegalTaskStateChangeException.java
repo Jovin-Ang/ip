@@ -1,4 +1,4 @@
-package chatbot;
+package chatbot.exception;
 
 /**
  * Checked exception for when there is an attempt to
@@ -8,7 +8,7 @@ package chatbot;
  */
 public class IllegalTaskStateChangeException extends Exception {
     /**
-     * Creates a chatbot.IllegalTaskStateChangeException with the default message
+     * Creates a chatbot.exception.IllegalTaskStateChangeException with the default message
      * "Unable to toggle to same state".
      */
     public IllegalTaskStateChangeException(String task, String prevState, String newState) {

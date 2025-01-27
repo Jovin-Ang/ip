@@ -27,6 +27,7 @@ public class DeadlineCommand extends Command {
      * @param ioHandler The IoHandler instance used to handle input and output operations.
      */
     public DeadlineCommand(IoHandler ioHandler, TaskList taskList) {
+        super("deadline", "adds a deadline task to the tasklist", "deadline <task> /<by when>");
         this.ioHandler = ioHandler;
         this.taskList = taskList;
     }

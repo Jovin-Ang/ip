@@ -28,6 +28,7 @@ public class ListCommand extends Command {
      * @param ioHandler The IoHandler instance used to handle input and output operations.
      */
     public ListCommand(IoHandler ioHandler, TaskList taskList) {
+        super("list", "shows all tasks in a list", "list");
         this.ioHandler = ioHandler;
         this.taskList = taskList;
     }

@@ -1,5 +1,6 @@
 package chatbot;
 
+import chatbot.exception.IllegalTaskStateChangeException;
 import chatbot.tasks.Task;
 
 import java.util.ArrayList;

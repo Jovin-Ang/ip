@@ -1,6 +1,6 @@
 package chatbot.tasks;
 
-import chatbot.IllegalTaskStateChangeException;
+import chatbot.exception.IllegalTaskStateChangeException;
 
 /**
  * The Task class is an abstract class that encapsulates a task. A task encapsulates its

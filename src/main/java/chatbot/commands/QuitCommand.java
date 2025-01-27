@@ -19,6 +19,7 @@ public class QuitCommand extends Command {
      * @param bot The ChatBot instance that this command will interact with.
      */
     public QuitCommand(ChatBot bot) {
+        super("quit", "bye bye :(", "quit");
         this.bot = bot;
     }
 
