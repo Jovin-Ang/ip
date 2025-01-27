@@ -3,6 +3,8 @@ package chatbot.ui;
 import chatbot.commands.*;
 import chatbot.data.TaskList;
 import chatbot.exception.InvalidCommandSyntaxException;
+import chatbot.exception.StorageOperationException;
+import chatbot.storage.JsonStorage;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -30,10 +32,14 @@ public class ChatBot implements IoHandler {
      */
     private final Scanner scanner;
     /**
+     * A storage manager that handles JSON serialization and deserialization of tasks.
+     */
+    private final JsonStorage storage = new JsonStorage();
+    /**
      * A TaskList instance, which is used to organize,
      * store, and manipulate tasks within the chatbot application.
      */
-    private final TaskList taskList = new TaskList();
+    private TaskList taskList;
     /**
      * A map that associates command names with their respective command implementations.
      */
@@ -53,6 +59,18 @@ public class ChatBot implements IoHandler {
     public ChatBot(String name, Scanner scanner) {
         this.name = name;
         this.scanner = scanner;
+    }
+
+    /**
+     * Initializes the chatbot by loading tasks from storage and setting up commands.
+     */
+    public void init() {
+        try {
+            this.taskList = storage.load();
+        } catch (StorageOperationException e) {
+            this.send("Failed to load tasks: " + e.getMessage());
+            throw new RuntimeException(e);
+        }
         commands.put("help", new HelpCommand(this, commands));
         commands.put("quit", new QuitCommand(this));
         commands.put("todo", new TodoCommand(this, taskList));
@@ -77,10 +95,25 @@ public class ChatBot implements IoHandler {
         }
     }
 
+    /**
+     * Stops the chatbot and saves tasks to storage.
+     */
     public void stop() {
         isRunning = false;
+        // Save tasks to storage before stopping
+        try {
+            storage.save(taskList);
+        } catch (StorageOperationException e) {
+            this.send("Failed to save tasks: " + e.getMessage());
+        }
     }
 
+    /**
+     * Processes user input by parsing the command and arguments,
+     * then executing the corresponding command if it exists.
+     *
+     * @param input The user's input string.
+     */
     private void processInput(String input) {
         String[] parts = input.split(" ", 2); // Split into command and arguments
         String command = parts[0]; // First word is the command
