@@ -1,5 +1,3 @@
-package chatbot;
-
 import chatbot.ui.ChatBot;
 
 import java.util.Scanner;
