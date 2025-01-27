@@ -1,8 +1,9 @@
 package chatbot.commands;
 
-import chatbot.IoHandler;
-import chatbot.TaskList;
-import chatbot.tasks.Task;
+import chatbot.exception.InvalidCommandSyntaxException;
+import chatbot.ui.IoHandler;
+import chatbot.data.TaskList;
+import chatbot.data.tasks.Task;
 
 /**
  * Represents a command that deletes a task in a TaskList.
@@ -36,9 +37,10 @@ public class DeleteCommand extends Command {
      * Deletes a task from the task list based on the provided task number.
      *
      * @param arguments The task number to be deleted.
+     * @throws InvalidCommandSyntaxException If the task number is invalid.
      */
     @Override
-    public void execute(String arguments) {
+    public void execute(String arguments) throws InvalidCommandSyntaxException {
         if (taskList.getTotalTasks() == 0) {
             ioHandler.send("No tasks to delete.");
             return;
@@ -52,7 +54,7 @@ public class DeleteCommand extends Command {
         } catch (IndexOutOfBoundsException e) {
             ioHandler.send("Invalid task number. Ensure the number is between 1 and " + taskList.getTotalTasks() + ".");
         } catch (Exception e) {
-            ioHandler.send("Invalid task number. Use: mark <taskNumber>");
+            throw new InvalidCommandSyntaxException("Invalid task number.");
         }
     }
 }

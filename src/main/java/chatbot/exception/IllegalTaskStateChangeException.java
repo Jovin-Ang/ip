@@ -8,7 +8,7 @@ package chatbot.exception;
  */
 public class IllegalTaskStateChangeException extends Exception {
     /**
-     * Creates a chatbot.exception.IllegalTaskStateChangeException with the default message
+     * Creates a IllegalTaskStateChangeException with the default message
      * "Unable to toggle to same state".
      */
     public IllegalTaskStateChangeException(String task, String prevState, String newState) {

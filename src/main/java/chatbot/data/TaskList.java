@@ -1,12 +1,12 @@
-package chatbot;
+package chatbot.data;
 
 import chatbot.exception.IllegalTaskStateChangeException;
-import chatbot.tasks.Task;
+import chatbot.data.tasks.Task;
 
 import java.util.ArrayList;
 
 /**
- * The chatbot.TaskList class encapsulates an arraylist of tasks.
+ * The TaskList class encapsulates an arraylist of tasks.
  *
  * @author Jovin Ang
  */

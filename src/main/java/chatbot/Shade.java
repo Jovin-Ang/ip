@@ -1,4 +1,6 @@
-import chatbot.ChatBot;
+package chatbot;
+
+import chatbot.ui.ChatBot;
 
 import java.util.Scanner;
 
@@ -9,10 +11,10 @@ import java.util.Scanner;
  */
 public class Shade {
     public static void main(String[] args) {
-        // Create a scanner to read from standard input.
+        // Create a scanner to read from standard input
         Scanner scanner = new Scanner(System.in);
 
-        // Create chatbot.
+        // Create chatbot
         ChatBot shade = new ChatBot("Shade", scanner);
 
         // Run the chatbot

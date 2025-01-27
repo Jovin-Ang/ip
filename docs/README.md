@@ -1,4 +1,4 @@
-# Shade User Guide
+# chatbot.Shade User Guide
 
 // Update the title above to match the actual product name
 

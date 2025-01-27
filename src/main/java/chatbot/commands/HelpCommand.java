@@ -1,6 +1,6 @@
 package chatbot.commands;
 
-import chatbot.IoHandler;
+import chatbot.ui.IoHandler;
 
 import java.util.Map;
 

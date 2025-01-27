@@ -1,4 +1,4 @@
-package chatbot;
+package chatbot.ui;
 
 /**
  * An interface for handling input and output operations.

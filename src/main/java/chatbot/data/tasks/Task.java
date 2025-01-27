@@ -1,4 +1,4 @@
-package chatbot.tasks;
+package chatbot.data.tasks;
 
 import chatbot.exception.IllegalTaskStateChangeException;
 

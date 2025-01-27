@@ -1,8 +1,9 @@
 package chatbot.commands;
 
-import chatbot.IoHandler;
-import chatbot.TaskList;
-import chatbot.tasks.DeadlineTask;
+import chatbot.exception.InvalidCommandSyntaxException;
+import chatbot.ui.IoHandler;
+import chatbot.data.TaskList;
+import chatbot.data.tasks.DeadlineTask;
 
 /**
  * Represents a command for adding a new deadline task to a TaskList.
@@ -36,17 +37,16 @@ public class DeadlineCommand extends Command {
      * Executes the deadline command to create a new deadline task and add it to the associated TaskList.
      *
      * @param arguments The description of the task to be added.
+     * @throws InvalidCommandSyntaxException If the task description or deadline is empty/invalid.
      */
     @Override
-    public void execute(String arguments) {
+    public void execute(String arguments) throws InvalidCommandSyntaxException {
         if (arguments.isEmpty()) {
-            ioHandler.send("Uh oh, task should not be empty!");
-            return;
+            throw new InvalidCommandSyntaxException("Uh oh, task should not be empty!");
         }
         String[] parts = arguments.split(" /", 2);
         if (parts.length != 2) {
-            ioHandler.send("Expected 2 arguments, only got " + parts.length + ".");
-            return;
+            throw new InvalidCommandSyntaxException("Expected 2 arguments, only got " + parts.length + ".");
         }
         DeadlineTask newDeadlineTask = new DeadlineTask(parts[0], parts[1]);
         taskList.addTask(newDeadlineTask);
