@@ -3,6 +3,7 @@ package chatbot.ui;
 import chatbot.commands.*;
 import chatbot.data.TaskList;
 import chatbot.exception.InvalidCommandSyntaxException;
+import chatbot.exception.StorageOperationException;
 import chatbot.storage.JsonStorage;
 
 import java.util.LinkedHashMap;
@@ -66,7 +67,7 @@ public class ChatBot implements IoHandler {
     public void init() {
         try {
             this.taskList = storage.load();
-        } catch (Exception e) {
+        } catch (StorageOperationException e) {
             this.send("Failed to load tasks: " + e.getMessage());
             throw new RuntimeException(e);
         }
@@ -102,7 +103,7 @@ public class ChatBot implements IoHandler {
         // Save tasks to storage before stopping
         try {
             storage.save(taskList);
-        } catch (Exception e) {
+        } catch (StorageOperationException e) {
             this.send("Failed to save tasks: " + e.getMessage());
         }
     }

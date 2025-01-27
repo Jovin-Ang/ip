@@ -2,6 +2,7 @@ package chatbot.storage;
 
 import chatbot.data.TaskList;
 import chatbot.data.tasks.Task;
+import chatbot.exception.StorageOperationException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
@@ -55,26 +56,35 @@ public class JsonStorage {
      * Loads task data from the JSON file.
      *
      * @return The TaskList object containing the loaded tasks.
-     * @throws IOException If an I/O error occurs while reading the file.
-     * @throws JsonSyntaxException If the JSON data is invalid or cannot be parsed.
+     * @throws StorageOperationException If some error occurs while reading from the file.
      */
-    public TaskList load() throws IOException, JsonSyntaxException {
+    public TaskList load() throws StorageOperationException {
         if (!Files.exists(savePath) || !Files.isRegularFile(savePath)) {
             return new TaskList();
         }
-        String json = Files.readString(savePath);
-        return gson.fromJson(json, TaskList.class);
+        try {
+            String json = Files.readString(savePath);
+            return gson.fromJson(json, TaskList.class);
+        } catch (IOException e) {
+            throw new StorageOperationException("Error reading file: " + savePath);
+        } catch (JsonSyntaxException e) {
+            throw new StorageOperationException("Invalid JSON data in file: " + savePath);
+        }
     }
 
     /**
      * Saves task data to the JSON file.
      *
      * @param taskList The TaskList object containing the tasks to save.
-     * @throws IOException If an I/O error occurs while writing to the file.
+     * @throws StorageOperationException If some error occurs while writing to the file.
      */
-    public void save(TaskList taskList) throws IOException {
+    public void save(TaskList taskList) throws StorageOperationException {
         String json = gson.toJson(taskList);
-        Files.createDirectories(savePath.getParent());
-        Files.writeString(savePath, json);
+        try {
+            Files.createDirectories(savePath.getParent());
+            Files.writeString(savePath, json);
+        } catch (IOException e) {
+            throw new StorageOperationException("Error writing to file: " + savePath);
+        }
     }
 }
