@@ -11,6 +11,7 @@ public class ToDoTask extends Task {
      * Creates a to-do task.
      *
      * @param task The task.
+     * @throws IllegalArgumentException If the task is null or empty.
      */
     public ToDoTask(String task) {
         super(task);

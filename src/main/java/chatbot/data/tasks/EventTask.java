@@ -26,9 +26,13 @@ public class EventTask extends Task {
      * @param task The task.
      * @param startTime The start time of the event.
      * @param endTime The end time of the event.
+     * @throws IllegalArgumentException If the task is null or empty or if the start time or end time is null.
      */
     public EventTask(String task, LocalDateTime startTime, LocalDateTime endTime) {
         super(task);
+        if (startTime == null || endTime == null) {
+            throw new IllegalArgumentException("Start time and end time cannot be null");
+        }
         this.startTime = startTime;
         this.endTime = endTime;
     }

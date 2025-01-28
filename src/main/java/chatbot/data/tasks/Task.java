@@ -23,8 +23,12 @@ public abstract class Task {
      * Creates a task.
      *
      * @param task The task.
+     * @throws IllegalArgumentException If the task is null or empty.
      */
     public Task(String task) {
+        if (task == null || task.trim().isEmpty()) {
+            throw new IllegalArgumentException("Task cannot be null or empty");
+        }
         this.task = task;
         this.isCompleted = false;
     }

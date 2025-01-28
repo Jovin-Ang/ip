@@ -21,9 +21,13 @@ public class DeadlineTask extends Task {
      *
      * @param task The task.
      * @param deadline The deadline of the task.
+     * @throws IllegalArgumentException If the task is null or empty or if the deadline is null.
      */
     public DeadlineTask(String task, LocalDateTime deadline) {
         super(task);
+        if (deadline == null) {
+            throw new IllegalArgumentException("Deadline cannot be null");
+        }
         this.deadline = deadline;
     }
 
