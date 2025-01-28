@@ -1,15 +1,41 @@
 package chatbot.data.tasks;
 
-public class DeadlineTask extends Task {
-    private final String deadline;
+import chatbot.util.DateTimeParser;
 
-    public DeadlineTask(String task, String deadline) {
+import java.time.LocalDateTime;
+
+/**
+ * The DeadlineTask class encapsulates a deadline task.
+ * A deadline task is a task that contains a deadline.
+ *
+ * @author Jovin Ang
+ */
+public class DeadlineTask extends Task {
+    /**
+     * The deadline of the task.
+     */
+    private final LocalDateTime deadline;
+
+    /**
+     * Creates a deadline task.
+     *
+     * @param task The task.
+     * @param deadline The deadline of the task.
+     */
+    public DeadlineTask(String task, LocalDateTime deadline) {
         super(task);
         this.deadline = deadline;
     }
 
+    /**
+     * String representation of the deadline task.
+     * The format includes a marker for the task type ('D' for deadline tasks).
+     *
+     * @return A string representation of the deadline task.
+     */
     @Override
     public String getDetails() {
-        return "[D]" + super.getDetails() + " (" + deadline + ")";
+        return "[D]" + super.getDetails() + " (by: "
+                + DateTimeParser.format(deadline) + ")";
     }
 }

@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
 
 /**
  * Manages the persistence of TaskList data using JSON storage.
@@ -48,6 +49,7 @@ public class JsonStorage {
         this.savePath = Paths.get(savePath);
         this.gson = new GsonBuilder()
                 .registerTypeAdapter(Task.class, new TaskTypeAdapter())
+                .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
                 .setPrettyPrinting()
                 .create();
     }
