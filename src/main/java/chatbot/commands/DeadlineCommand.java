@@ -4,6 +4,9 @@ import chatbot.exception.InvalidCommandSyntaxException;
 import chatbot.ui.IoHandler;
 import chatbot.data.TaskList;
 import chatbot.data.tasks.DeadlineTask;
+import chatbot.util.DateTimeParser;
+
+import java.time.LocalDateTime;
 
 /**
  * Represents a command for adding a new deadline task to a TaskList.
@@ -28,7 +31,7 @@ public class DeadlineCommand extends Command {
      * @param ioHandler The IoHandler instance used to handle input and output operations.
      */
     public DeadlineCommand(IoHandler ioHandler, TaskList taskList) {
-        super("deadline", "adds a deadline task to the tasklist", "deadline <task> /<by when>");
+        super("deadline", "adds a deadline task to the tasklist", "deadline <task> /by <YYYY-MM-DD> [HH:mm]");
         this.ioHandler = ioHandler;
         this.taskList = taskList;
     }
@@ -36,7 +39,7 @@ public class DeadlineCommand extends Command {
     /**
      * Executes the deadline command to create a new deadline task and add it to the associated TaskList.
      *
-     * @param arguments The description of the task to be added.
+     * @param arguments The description of the task to be added and its deadline.
      * @throws InvalidCommandSyntaxException If the task description or deadline is empty/invalid.
      */
     @Override
@@ -44,11 +47,22 @@ public class DeadlineCommand extends Command {
         if (arguments.isEmpty()) {
             throw new InvalidCommandSyntaxException("Uh oh, task should not be empty!");
         }
-        String[] parts = arguments.split(" /", 2);
+
+        // Split the arguments into task description and deadline
+        String[] parts = arguments.split(" /by ", 2);
+
         if (parts.length != 2) {
             throw new InvalidCommandSyntaxException("Expected 2 arguments, only got " + parts.length + ".");
         }
-        DeadlineTask newDeadlineTask = new DeadlineTask(parts[0], parts[1]);
+
+        LocalDateTime deadline;
+        try {
+            deadline = DateTimeParser.parse(parts[1]);
+        } catch (Exception e) {
+            throw new InvalidCommandSyntaxException("Invalid date format! Use 'yyyy-MM-dd' or 'yyyy-MM-dd HH:mm'.");
+        }
+
+        DeadlineTask newDeadlineTask = new DeadlineTask(parts[0], deadline);
         taskList.addTask(newDeadlineTask);
         ioHandler.send("Got it. I've added this task:\n  "
                 + newDeadlineTask.getDetails() + "\nYou have "
