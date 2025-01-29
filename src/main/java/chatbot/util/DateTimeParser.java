@@ -11,7 +11,7 @@ public class DateTimeParser {
     private static final DateTimeFormatter DATE_FORMATTER =
             DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private static final DateTimeFormatter DISPLAY_FORMATTER =
-            DateTimeFormatter.ofPattern("MMM dd yyyy, h:mm a");
+            DateTimeFormatter.ofPattern("MMM d yyyy, h:mm a");
 
     /**
      * Parses a date/datetime string into LocalDateTime.
