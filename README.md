@@ -56,14 +56,14 @@ Run `gradle checkstyleMain` to run checkstyle on the main source set
 
 ### Project Structure
 
-src/
-├── main/java/chatbot/
-│ ├── commands/ # Command implementations
-│ ├── data/ # Task data models
-│ ├── exceptions/ # Custom exceptions
-│ ├── storage/ # JSON persistence
-│ ├── ui/ # User interface
-│ └── util/ # Utility classes
+src/  
+├── main/java/chatbot/  
+│ ├── commands/ # Command implementations  
+│ ├── data/ # Task data models  
+│ ├── exceptions/ # Custom exceptions  
+│ ├── storage/ # JSON persistence  
+│ ├── ui/ # User interface  
+│ └── util/ # Utility classes  
 └── test/java/chatbot/
 
 ## Issues
