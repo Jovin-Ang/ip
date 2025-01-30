@@ -8,6 +8,7 @@ import chatbot.commands.Command;
 import chatbot.commands.DeadlineCommand;
 import chatbot.commands.DeleteCommand;
 import chatbot.commands.EventCommand;
+import chatbot.commands.FindCommand;
 import chatbot.commands.HelpCommand;
 import chatbot.commands.ListCommand;
 import chatbot.commands.MarkCommand;

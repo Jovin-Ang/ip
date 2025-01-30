@@ -150,12 +150,13 @@ class TaskListTest {
         }
 
         @Test
-        void testMatchingTaskDetailsConversion_IncludedKeyword() {
-            assertEquals("2. [D][X] Test Deadline Task (by: Jan 30 2025, 11:59 pm)", taskList.getMatchingTaskDetails("Deadline"));
+        void testMatchingTaskDetailsConversion_includedKeyword() {
+            assertEquals("2. [D][X] Test Deadline Task (by: Jan 30 2025, 11:59 pm)",
+                    taskList.getMatchingTaskDetails("Deadline"));
         }
 
         @Test
-        void testMatchingTaskDetailsConversion_ExcludedKeyword() {
+        void testMatchingTaskDetailsConversion_excludedKeyword() {
             assertEquals("No matching tasks found.", taskList.getMatchingTaskDetails("abcdef"));
         }
 

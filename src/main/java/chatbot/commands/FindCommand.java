@@ -1,8 +1,8 @@
 package chatbot.commands;
 
+import chatbot.data.TaskList;
 import chatbot.exception.InvalidCommandSyntaxException;
 import chatbot.ui.IoHandler;
-import chatbot.data.TaskList;
 
 /**
  * Represents a command for finding tasks in a TaskList that match a keyword.
@@ -44,7 +44,8 @@ public class FindCommand extends Command {
     @Override
     public void execute(String arguments) throws InvalidCommandSyntaxException {
         if (arguments.isEmpty()) {
-            throw new InvalidCommandSyntaxException("Uh oh, keyword should not be empty.\nIf you want to display all tasks, use `list` instead.");
+            throw new InvalidCommandSyntaxException("Uh oh, keyword should not be empty.\n"
+                    + "If you want to display all tasks, use `list` instead.");
         }
         if (taskList.getTotalTasks() == 0) {
             ioHandler.send("No tasks to find.");
