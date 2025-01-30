@@ -62,6 +62,11 @@ class TaskListTest {
     }
 
     @Test
+    void testMatchingTaskDetailsConversion_emptyList() {
+        assertEquals("No matching tasks found.", taskList.getMatchingTaskDetails("Test"));
+    }
+
+    @Test
     void testStringConversion_emptyList() {
         assertEquals("No tasks, yay!", taskList.toString());
     }
@@ -135,6 +140,16 @@ class TaskListTest {
         @Test
         void testDetailsConversion() {
             assertEquals("1. [T][ ] Test ToDo Task\n2. [D][X] Test Deadline Task (by: Jan 30 2025, 11:59 pm)\n3. [E][ ] Test Event Task (from: Jan 1 2025, 12:00 am to: Jan 31 2025, 11:59 pm)", taskList.getTaskDetails());
+        }
+
+        @Test
+        void testMatchingTaskDetailsConversion_IncludedKeyword() {
+            assertEquals("2. [D][X] Test Deadline Task (by: Jan 30 2025, 11:59 pm)", taskList.getMatchingTaskDetails("Deadline"));
+        }
+
+        @Test
+        void testMatchingTaskDetailsConversion_ExcludedKeyword() {
+            assertEquals("No matching tasks found.", taskList.getMatchingTaskDetails("abcdef"));
         }
 
         @Test
