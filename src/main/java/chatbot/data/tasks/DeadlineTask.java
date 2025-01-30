@@ -1,8 +1,8 @@
 package chatbot.data.tasks;
 
-import chatbot.util.DateTimeParser;
-
 import java.time.LocalDateTime;
+
+import chatbot.util.DateTimeParser;
 
 /**
  * The DeadlineTask class encapsulates a deadline task.
@@ -19,7 +19,7 @@ public class DeadlineTask extends Task {
     /**
      * Creates a deadline task.
      *
-     * @param task The task.
+     * @param task     The task.
      * @param deadline The deadline of the task.
      * @throws IllegalArgumentException If the task is null or empty or if the deadline is null.
      */

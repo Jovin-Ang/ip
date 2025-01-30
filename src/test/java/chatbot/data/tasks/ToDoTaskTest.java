@@ -1,14 +1,15 @@
 package chatbot.data.tasks;
 
-import chatbot.exception.IllegalTaskStateChangeException;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import chatbot.exception.IllegalTaskStateChangeException;
 
 class ToDoTaskTest {
     private final ToDoTask task = new ToDoTask("Test ToDo Task");

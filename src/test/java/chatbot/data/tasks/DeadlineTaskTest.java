@@ -1,16 +1,17 @@
 package chatbot.data.tasks;
 
-import chatbot.exception.IllegalTaskStateChangeException;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.time.LocalDateTime;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDateTime;
-
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import chatbot.exception.IllegalTaskStateChangeException;
 
 class DeadlineTaskTest {
     private final DeadlineTask task = new DeadlineTask("Test Deadline Task", LocalDateTime.of(2025, 1, 30, 23, 59));

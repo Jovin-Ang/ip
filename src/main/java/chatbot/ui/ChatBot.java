@@ -1,14 +1,23 @@
 package chatbot.ui;
 
-import chatbot.commands.*;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+import chatbot.commands.Command;
+import chatbot.commands.DeadlineCommand;
+import chatbot.commands.DeleteCommand;
+import chatbot.commands.EventCommand;
+import chatbot.commands.HelpCommand;
+import chatbot.commands.ListCommand;
+import chatbot.commands.MarkCommand;
+import chatbot.commands.QuitCommand;
+import chatbot.commands.TodoCommand;
+import chatbot.commands.UnmarkCommand;
 import chatbot.data.TaskList;
 import chatbot.exception.InvalidCommandSyntaxException;
 import chatbot.exception.StorageOperationException;
 import chatbot.storage.JsonStorage;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Scanner;
 
 /**
  * This class implements a chatbot.
@@ -36,14 +45,14 @@ public class ChatBot implements IoHandler {
      */
     private final JsonStorage storage = new JsonStorage();
     /**
+     * A map that associates command names with their respective command implementations.
+     */
+    private final Map<String, Command> commands = new LinkedHashMap<>();
+    /**
      * A TaskList instance, which is used to organize,
      * store, and manipulate tasks within the chatbot application.
      */
     private TaskList taskList;
-    /**
-     * A map that associates command names with their respective command implementations.
-     */
-    private final Map<String, Command> commands = new LinkedHashMap<>();
     /**
      * Indicates whether the chatbot is currently running.
      * Used to manage the state of the chatbot's main operation loop.

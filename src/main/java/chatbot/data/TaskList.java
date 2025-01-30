@@ -1,9 +1,9 @@
 package chatbot.data;
 
-import chatbot.exception.IllegalTaskStateChangeException;
-import chatbot.data.tasks.Task;
-
 import java.util.ArrayList;
+
+import chatbot.data.tasks.Task;
+import chatbot.exception.IllegalTaskStateChangeException;
 
 /**
  * The TaskList class encapsulates an arraylist of tasks.
@@ -49,7 +49,7 @@ public class TaskList {
      *
      * @param i The index of the task to be marked as completed.
      * @throws IllegalTaskStateChangeException If the task has already been marked as completed.
-     * @throws IndexOutOfBoundsException If the specified index is out of bounds in the task list.
+     * @throws IndexOutOfBoundsException       If the specified index is out of bounds in the task list.
      */
     public void completeTask(int i) throws IllegalTaskStateChangeException, IndexOutOfBoundsException {
         this.tasks.get(i).complete();
@@ -60,7 +60,7 @@ public class TaskList {
      *
      * @param i The index of the task to be marked as incomplete.
      * @throws IllegalTaskStateChangeException If the task is already in the incomplete state.
-     * @throws IndexOutOfBoundsException If the specified index is out of bounds in the task list.
+     * @throws IndexOutOfBoundsException       If the specified index is out of bounds in the task list.
      */
     public void incompleteTask(int i) throws IllegalTaskStateChangeException, IndexOutOfBoundsException {
         this.tasks.get(i).incomplete();
