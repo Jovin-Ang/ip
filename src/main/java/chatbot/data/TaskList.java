@@ -105,6 +105,24 @@ public class TaskList {
     }
 
     /**
+     * Returns a string representation of tasks that match the specified keyword.
+     * Each task is displayed with its index and detailed information. If no tasks match the keyword,
+     * a default message is returned indicating no matching tasks were found.
+     * The search is case-sensitive and is based on the task descriptions.
+     *
+     * @param keyword The keyword to search for in the task descriptions.
+     * @return A string containing the indexed details of all tasks that match the keyword.
+     */
+    public String getMatchingTaskDetails(String keyword) {
+        String lowerCaseKeyword = keyword.toLowerCase();
+        return tasks.stream()
+                .filter(task -> task.toString().toLowerCase().contains(lowerCaseKeyword))
+                .map(task -> (tasks.indexOf(task) + 1) + ". " + task.getDetails())
+                .reduce((a, b) -> a + "\n" + b)
+                .orElse("No matching tasks found.");
+    }
+
+    /**
      * Returns a string representation of the task list, where each task is listed with its
      * index and description. If no tasks are present, a default message is returned indicating
      * an empty task list.
