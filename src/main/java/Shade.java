@@ -1,6 +1,6 @@
-import chatbot.ui.ChatBot;
-
 import java.util.Scanner;
+
+import chatbot.ui.ChatBot;
 
 /**
  * The main class for now

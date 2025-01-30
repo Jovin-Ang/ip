@@ -81,7 +81,7 @@ public class TaskList {
      * newlines. If the task list is empty, a default message indicating no tasks is returned.
      *
      * @return A string containing the indexed descriptions of all tasks in the list,
-     * or a message indicating there are no tasks if the list is empty.
+     *         or a message indicating there are no tasks if the list is empty.
      */
     public String getTaskDescriptions() {
         return tasks.stream()

@@ -45,8 +45,8 @@ public class EventTask extends Task {
      */
     @Override
     public String getDetails() {
-        return "[E]" + super.getDetails() +
-                " (from: " + DateTimeParser.format(startTime) +
-                " to: " + DateTimeParser.format(endTime) + ")";
+        return "[E]" + super.getDetails()
+                + " (from: " + DateTimeParser.format(startTime)
+                + " to: " + DateTimeParser.format(endTime) + ")";
     }
 }

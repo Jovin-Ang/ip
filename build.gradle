@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'application'
     id 'com.gradleup.shadow' version '9.0.0-beta6'
+    id 'checkstyle'
 }
 
 repositories {
@@ -35,6 +36,10 @@ application {
 shadowJar {
     archiveBaseName = "shade"
     archiveClassifier = null
+}
+
+checkstyle {
+    toolVersion = '10.21.2'
 }
 
 run{

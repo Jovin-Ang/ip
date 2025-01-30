@@ -32,6 +32,6 @@ public class QuitCommand extends Command {
     @Override
     public void execute(String arguments) {
         bot.send("Bye :) Hope to see you again soon!");
-        bot.stop();  // Call chatbot shutdown method
+        bot.stop(); // Call chatbot shutdown method
     }
 }

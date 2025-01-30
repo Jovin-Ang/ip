@@ -5,6 +5,11 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+/**
+ * This class provides utility methods for parsing and formatting date and time strings.
+ *
+ * @author Jovin Ang
+ */
 public class DateTimeParser {
     private static final DateTimeFormatter DATETIME_FORMATTER =
             DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
