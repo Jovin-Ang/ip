@@ -1,9 +1,9 @@
 package chatbot.commands;
 
-import chatbot.exception.InvalidCommandSyntaxException;
-import chatbot.ui.IoHandler;
 import chatbot.data.TaskList;
 import chatbot.data.tasks.ToDoTask;
+import chatbot.exception.InvalidCommandSyntaxException;
+import chatbot.ui.IoHandler;
 
 /**
  * Represents a command for adding a new todotask to a TaskList.

@@ -1,20 +1,21 @@
 package chatbot.data;
 
-import chatbot.data.tasks.DeadlineTask;
-import chatbot.data.tasks.EventTask;
-import chatbot.data.tasks.ToDoTask;
-import chatbot.exception.IllegalTaskStateChangeException;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.time.LocalDateTime;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDateTime;
-
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import chatbot.data.tasks.DeadlineTask;
+import chatbot.data.tasks.EventTask;
+import chatbot.data.tasks.ToDoTask;
+import chatbot.exception.IllegalTaskStateChangeException;
 
 class TaskListTest {
     private TaskList taskList;
@@ -76,7 +77,8 @@ class TaskListTest {
             DeadlineTask task2 = new DeadlineTask("Test Deadline Task", LocalDateTime.of(2025, 1, 30, 23, 59));
             task2.complete();
             taskList.addTask(task2);
-            taskList.addTask(new EventTask("Test Event Task", LocalDateTime.of(2025, 1, 1, 0, 0), LocalDateTime.of(2025, 1, 31, 23, 59)));
+            taskList.addTask(new EventTask("Test Event Task", LocalDateTime.of(2025, 1, 1, 0, 0),
+                    LocalDateTime.of(2025, 1, 31, 23, 59)));
         }
 
         @Test
@@ -129,12 +131,17 @@ class TaskListTest {
 
         @Test
         void testDescriptionConversion() {
-            assertEquals("1. Test ToDo Task\n2. Test Deadline Task\n3. Test Event Task", taskList.getTaskDescriptions());
+            assertEquals("1. Test ToDo Task\n2. Test Deadline Task\n3. Test Event Task",
+                    taskList.getTaskDescriptions());
         }
 
         @Test
         void testDetailsConversion() {
-            assertEquals("1. [T][ ] Test ToDo Task\n2. [D][X] Test Deadline Task (by: Jan 30 2025, 11:59 pm)\n3. [E][ ] Test Event Task (from: Jan 1 2025, 12:00 am to: Jan 31 2025, 11:59 pm)", taskList.getTaskDetails());
+            assertEquals("""
+                            1. [T][ ] Test ToDo Task
+                            2. [D][X] Test Deadline Task (by: Jan 30 2025, 11:59 pm)
+                            3. [E][ ] Test Event Task (from: Jan 1 2025, 12:00 am to: Jan 31 2025, 11:59 pm)""",
+                    taskList.getTaskDetails());
         }
 
         @Test
@@ -142,5 +149,4 @@ class TaskListTest {
             assertEquals("1. Test ToDo Task\n2. Test Deadline Task\n3. Test Event Task", taskList.toString());
         }
     }
-
 }

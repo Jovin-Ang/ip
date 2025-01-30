@@ -1,9 +1,9 @@
 package chatbot.commands;
 
-import chatbot.exception.InvalidCommandSyntaxException;
-import chatbot.ui.IoHandler;
 import chatbot.data.TaskList;
 import chatbot.data.tasks.Task;
+import chatbot.exception.InvalidCommandSyntaxException;
+import chatbot.ui.IoHandler;
 
 /**
  * Represents a command that deletes a task in a TaskList.

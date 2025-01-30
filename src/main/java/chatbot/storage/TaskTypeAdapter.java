@@ -1,16 +1,16 @@
 package chatbot.storage;
 
-import chatbot.data.tasks.Task;
+import java.lang.reflect.Type;
 
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import com.google.gson.JsonSerializer;
 import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonSerializer;
 
-import java.lang.reflect.Type;
+import chatbot.data.tasks.Task;
 
 /**
  * Handles JSON serialization and deserialization of Task objects using Gson.
@@ -32,9 +32,9 @@ public class TaskTypeAdapter implements JsonSerializer<Task>, JsonDeserializer<T
     /**
      * Serializes a Task object into its JSON representation.
      *
-     * @param task The Task object to serialize
+     * @param task      The Task object to serialize
      * @param typeOfSrc The type of the source object
-     * @param context The serialization context
+     * @param context   The serialization context
      * @return JsonElement containing the serialized task data
      */
     @Override
@@ -48,7 +48,7 @@ public class TaskTypeAdapter implements JsonSerializer<Task>, JsonDeserializer<T
     /**
      * Deserializes a JSON element back into a Task object.
      *
-     * @param json The JSON element to deserialize
+     * @param json    The JSON element to deserialize
      * @param typeOfT The type of the object to deserialize into
      * @param context The deserialization context
      * @return Task object reconstructed from JSON

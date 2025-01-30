@@ -40,10 +40,11 @@ public abstract class Task {
      * @throws IllegalTaskStateChangeException if the task is already in the completed state.
      */
     public void complete() throws IllegalTaskStateChangeException {
-        if (!this.isCompleted)
+        if (!this.isCompleted) {
             this.isCompleted = true;
-        else
+        } else {
             throw new IllegalTaskStateChangeException(this.task, "completed", "completed");
+        }
     }
 
     /**
@@ -53,10 +54,11 @@ public abstract class Task {
      * @throws IllegalTaskStateChangeException if the task is already in the incomplete state.
      */
     public void incomplete() throws IllegalTaskStateChangeException {
-        if (this.isCompleted)
+        if (this.isCompleted) {
             this.isCompleted = false;
-        else
+        } else {
             throw new IllegalTaskStateChangeException(this.task, "incomplete", "incomplete");
+        }
     }
 
     /**

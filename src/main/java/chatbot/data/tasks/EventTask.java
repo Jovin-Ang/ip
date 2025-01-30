@@ -1,8 +1,8 @@
 package chatbot.data.tasks;
 
-import chatbot.util.DateTimeParser;
-
 import java.time.LocalDateTime;
+
+import chatbot.util.DateTimeParser;
 
 /**
  * The EventTask class encapsulates an event task.
@@ -23,9 +23,9 @@ public class EventTask extends Task {
     /**
      * Creates an event task.
      *
-     * @param task The task.
+     * @param task      The task.
      * @param startTime The start time of the event.
-     * @param endTime The end time of the event.
+     * @param endTime   The end time of the event.
      * @throws IllegalArgumentException If the task is null or empty or if the start time or end time is null.
      */
     public EventTask(String task, LocalDateTime startTime, LocalDateTime endTime) {
@@ -45,8 +45,8 @@ public class EventTask extends Task {
      */
     @Override
     public String getDetails() {
-        return "[E]" + super.getDetails() +
-                " (from: " + DateTimeParser.format(startTime) +
-                " to: " + DateTimeParser.format(endTime) + ")";
+        return "[E]" + super.getDetails()
+                + " (from: " + DateTimeParser.format(startTime)
+                + " to: " + DateTimeParser.format(endTime) + ")";
     }
 }

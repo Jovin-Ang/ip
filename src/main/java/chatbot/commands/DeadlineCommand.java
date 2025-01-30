@@ -1,12 +1,12 @@
 package chatbot.commands;
 
-import chatbot.exception.InvalidCommandSyntaxException;
-import chatbot.ui.IoHandler;
+import java.time.LocalDateTime;
+
 import chatbot.data.TaskList;
 import chatbot.data.tasks.DeadlineTask;
+import chatbot.exception.InvalidCommandSyntaxException;
+import chatbot.ui.IoHandler;
 import chatbot.util.DateTimeParser;
-
-import java.time.LocalDateTime;
 
 /**
  * Represents a command for adding a new deadline task to a TaskList.

@@ -1,9 +1,9 @@
 package chatbot.commands;
 
+import chatbot.data.TaskList;
 import chatbot.exception.IllegalTaskStateChangeException;
 import chatbot.exception.InvalidCommandSyntaxException;
 import chatbot.ui.IoHandler;
-import chatbot.data.TaskList;
 
 /**
  * Represents a command that marks a task in a TaskList as incomplete.

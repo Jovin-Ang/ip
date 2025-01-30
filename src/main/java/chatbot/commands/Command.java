@@ -25,9 +25,9 @@ public abstract class Command {
     /**
      * Constructs a Command with the specified trigger, description, and usage.
      *
-     * @param trigger The command trigger word or phrase.
+     * @param trigger     The command trigger word or phrase.
      * @param description A brief description of what the command does.
-     * @param usage The command syntax.
+     * @param usage       The command syntax.
      */
     public Command(String trigger, String description, String usage) {
         this.trigger = trigger;

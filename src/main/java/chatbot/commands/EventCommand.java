@@ -1,12 +1,12 @@
 package chatbot.commands;
 
-import chatbot.exception.InvalidCommandSyntaxException;
-import chatbot.ui.IoHandler;
+import java.time.LocalDateTime;
+
 import chatbot.data.TaskList;
 import chatbot.data.tasks.EventTask;
+import chatbot.exception.InvalidCommandSyntaxException;
+import chatbot.ui.IoHandler;
 import chatbot.util.DateTimeParser;
-
-import java.time.LocalDateTime;
 
 /**
  * Represents a command for adding a new event task to a TaskList.
@@ -31,7 +31,8 @@ public class EventCommand extends Command {
      * @param ioHandler The IoHandler instance used to handle input and output operations.
      */
     public EventCommand(IoHandler ioHandler, TaskList taskList) {
-        super("event", "adds an event task to the tasklist", "event <task> /from <YYYY-MM-DD> [HH:mm] /to <YYYY-MM-DD> [HH:mm]");
+        super("event", "adds an event task to the tasklist",
+                "event <task> /from <YYYY-MM-DD> [HH:mm] /to <YYYY-MM-DD> [HH:mm]");
         this.ioHandler = ioHandler;
         this.taskList = taskList;
     }

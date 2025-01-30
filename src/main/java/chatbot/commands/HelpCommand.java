@@ -1,8 +1,8 @@
 package chatbot.commands;
 
-import chatbot.ui.IoHandler;
-
 import java.util.Map;
+
+import chatbot.ui.IoHandler;
 
 /**
  * Represents a command that provides a list of available commands
