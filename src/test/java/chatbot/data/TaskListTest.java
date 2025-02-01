@@ -21,7 +21,7 @@ class TaskListTest {
     private TaskList taskList;
 
     @BeforeEach
-    void setUp() {
+    void setup() {
         taskList = new TaskList();
     }
 
