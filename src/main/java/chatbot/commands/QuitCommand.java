@@ -1,6 +1,7 @@
 package chatbot.commands;
 
-import chatbot.ui.ChatBot;
+import chatbot.ui.IoHandler;
+import javafx.application.Platform;
 
 /**
  * Represents a command that terminates the chatbot gracefully.
@@ -9,18 +10,19 @@ import chatbot.ui.ChatBot;
  */
 public class QuitCommand extends Command {
     /**
-     * A reference to a ChatBot instance
+     * Reference to an IoHandler instance which Handles input and output operations for
+     * the command.
      */
-    private final ChatBot bot;
+    private final IoHandler ioHandler;
 
     /**
      * Constructs a QuitCommand instance that allows the chatbot to terminate gracefully.
      *
-     * @param bot The ChatBot instance that this command will interact with.
+     * @param ioHandler The IoHandler instance used to handle input and output operations.
      */
-    public QuitCommand(ChatBot bot) {
+    public QuitCommand(IoHandler ioHandler) {
         super("quit", "bye bye :(", "quit");
-        this.bot = bot;
+        this.ioHandler = ioHandler;
     }
 
     /**
@@ -31,7 +33,7 @@ public class QuitCommand extends Command {
      */
     @Override
     public void execute(String arguments) {
-        bot.send("Bye :) Hope to see you again soon!");
-        bot.stop(); // Call chatbot shutdown method
+        ioHandler.send("Bye :) Hope to see you again soon!");
+        Platform.exit(); // Exit gracefully
     }
 }
