@@ -2,7 +2,6 @@ package chatbot.ui;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 import chatbot.commands.Command;
 import chatbot.commands.DeadlineCommand;
@@ -19,6 +18,9 @@ import chatbot.data.TaskList;
 import chatbot.exception.InvalidCommandSyntaxException;
 import chatbot.exception.StorageOperationException;
 import chatbot.storage.JsonStorage;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.layout.VBox;
 
 /**
  * This class implements a chatbot.
@@ -27,20 +29,9 @@ import chatbot.storage.JsonStorage;
  */
 public class ChatBot implements IoHandler {
     /**
-     * A constant string used to visually separate sections of text output.
-     * The separator is displayed both before and after chatbot messages
-     * to improve readability during interactions.
-     */
-    private static final String SEPARATOR = "____________________________________________________________";
-
-    /**
      * The name of the chatbot.
      */
     private final String name;
-    /**
-     * A Scanner object for reading user input.
-     */
-    private final Scanner scanner;
     /**
      * A storage manager that handles JSON serialization and deserialization of tasks.
      */
@@ -50,25 +41,36 @@ public class ChatBot implements IoHandler {
      */
     private final Map<String, Command> commands = new LinkedHashMap<>();
     /**
+     * A dialog container for displaying chat messages.
+     */
+    private final VBox dialogContainer;
+    /**
+     * The text field for user input.
+     */
+    private final TextField userInput;
+    /**
+     * The avatar image for the chatbot.
+     */
+    private final Image botImage;
+    /**
      * A TaskList instance, which is used to organize,
      * store, and manipulate tasks within the chatbot application.
      */
     private TaskList taskList;
-    /**
-     * Indicates whether the chatbot is currently running.
-     * Used to manage the state of the chatbot's main operation loop.
-     */
-    private boolean isRunning = true;
 
     /**
      * Creates a new ChatBot instance.
      *
-     * @param name    The name of the chatbot.
-     * @param scanner The Scanner object used to handle user input.
+     * @param name            The name of the chatbot.
+     * @param dialogContainer The dialog container for displaying chat messages.
+     * @param userInput       The text field for user input.
+     * @param botImage        The avatar image for the chatbot.
      */
-    public ChatBot(String name, Scanner scanner) {
+    public ChatBot(String name, VBox dialogContainer, TextField userInput, Image botImage) {
         this.name = name;
-        this.scanner = scanner;
+        this.dialogContainer = dialogContainer;
+        this.userInput = userInput;
+        this.botImage = botImage;
     }
 
     /**
@@ -91,26 +93,14 @@ public class ChatBot implements IoHandler {
         commands.put("mark", new MarkCommand(this, taskList));
         commands.put("unmark", new UnmarkCommand(this, taskList));
         commands.put("delete", new DeleteCommand(this, taskList));
-    }
 
-    /**
-     * Initiates the chatbot's interaction with the user.
-     */
-    public void run() {
-        // Greet user
         this.send("Hi! I'm " + this.name + "\nHow can I help you today?\n(\"help\" to see what I can do)");
-
-        while (this.isRunning) {
-            String input = this.getInput();
-            this.processInput(input);
-        }
     }
 
     /**
-     * Stops the chatbot and saves tasks to storage.
+     * Saves tasks to storage.
      */
-    public void stop() {
-        isRunning = false;
+    public void saveTasks() {
         // Save tasks to storage before stopping
         try {
             storage.save(taskList);
@@ -125,7 +115,7 @@ public class ChatBot implements IoHandler {
      *
      * @param input The user's input string.
      */
-    private void processInput(String input) {
+    void processInput(String input) {
         String[] parts = input.split(" ", 2); // Split into command and arguments
         String command = parts[0]; // First word is the command
         String arguments = (parts.length > 1) ? parts[1] : ""; // Arguments string or empty
@@ -151,17 +141,16 @@ public class ChatBot implements IoHandler {
      */
     @Override
     public void send(String message) {
-        System.out.println(ChatBot.SEPARATOR + "\n" + message + "\n" + ChatBot.SEPARATOR);
+        dialogContainer.getChildren().add(DialogBox.getBotDialog(message, botImage));
     }
 
     /**
      * Reads and returns a line of input from the user.
      *
-     * @return A string representing the user's input from the console.
+     * @return A string representing the user's input from the chat interface.
      */
     @Override
     public String getInput() {
-        System.out.print("> ");
-        return scanner.nextLine().trim();
+        return userInput.getText().trim();
     }
 }
