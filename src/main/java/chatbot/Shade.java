@@ -1,3 +1,5 @@
+package chatbot;
+
 import java.util.Scanner;
 
 import chatbot.ui.ChatBot;
