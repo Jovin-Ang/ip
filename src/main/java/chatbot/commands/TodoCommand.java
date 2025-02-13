@@ -44,6 +44,7 @@ public class TodoCommand extends Command {
         if (arguments.isEmpty()) {
             throw new InvalidCommandSyntaxException("Uh oh, task should not be empty!");
         }
+
         ToDoTask newToDoTask = new ToDoTask(arguments);
         taskList.addTask(newToDoTask);
         ioHandler.send("Got it. I've added this task:\n  "

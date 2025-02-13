@@ -48,6 +48,7 @@ public class MarkCommand extends Command {
         }
         try {
             int taskNumber = Integer.parseInt(arguments);
+            assert taskNumber > 0 : "Task number should be greater than 0";
             taskList.completeTask(taskNumber - 1);
             ioHandler.send("Marked task " + taskNumber + " as completed.");
         } catch (IllegalTaskStateChangeException e) {

@@ -66,6 +66,10 @@ public class EventCommand extends Command {
             throw new InvalidCommandSyntaxException("Invalid date format! Use 'yyyy-MM-dd' or 'yyyy-MM-dd HH:mm'");
         }
 
+        assert start != null : "Start time should not be null";
+        assert end != null : "End time should not be null";
+        assert !parts[0].isEmpty() : "Task description should not be empty";
+
         if (end.isBefore(start)) {
             throw new InvalidCommandSyntaxException("Error: End time must be after start time");
         }
