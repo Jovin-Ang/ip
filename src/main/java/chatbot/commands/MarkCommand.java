@@ -48,7 +48,7 @@ public class MarkCommand extends Command {
         }
         try {
             int taskNumber = Integer.parseInt(arguments);
-            taskList.completeTask(taskNumber - 1);
+            taskList.markTaskAsCompleted(taskNumber - 1);
             ioHandler.send("Marked task " + taskNumber + " as completed.");
         } catch (IllegalTaskStateChangeException e) {
             ioHandler.send(e.getMessage());

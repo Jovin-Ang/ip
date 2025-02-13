@@ -29,13 +29,13 @@ class DeadlineTaskTest {
     }
 
     @Test
-    void completeTask_notCompleteTask_success() {
-        assertDoesNotThrow(task::complete);
+    void markAsComplete_notCompleteTask_success() {
+        assertDoesNotThrow(task::markAsCompleted);
     }
 
     @Test
-    void incompleteTask_notCompleteTask_exceptionThrown() {
-        Exception exception = assertThrows(IllegalTaskStateChangeException.class, task::incomplete);
+    void markAsIncomplete_notCompleteTask_exceptionThrown() {
+        Exception exception = assertThrows(IllegalTaskStateChangeException.class, task::markAsIncomplete);
         assertEquals("Unable to change \"Test Deadline Task\" from \"incomplete\" to \"incomplete\"",
                 exception.getMessage());
     }
@@ -55,18 +55,18 @@ class DeadlineTaskTest {
     class CompleteToDoTask {
 
         @BeforeEach
-        void completeTask() throws IllegalTaskStateChangeException {
-            task.complete();
+        void markAsCompleted() throws IllegalTaskStateChangeException {
+            task.markAsCompleted();
         }
 
         @Test
-        void incompleteTask_completedTask_success() {
-            assertDoesNotThrow(task::incomplete);
+        void markAsIncomplete_completedTask_success() {
+            assertDoesNotThrow(task::markAsIncomplete);
         }
 
         @Test
-        void completeTask_completedTask_exceptionThrown() {
-            Exception exception = assertThrows(IllegalTaskStateChangeException.class, task::complete);
+        void markAsCompleted_completedTask_exceptionThrown() {
+            Exception exception = assertThrows(IllegalTaskStateChangeException.class, task::markAsCompleted);
             assertEquals("Unable to change \"Test Deadline Task\" from \"completed\" to \"completed\"",
                     exception.getMessage());
         }
