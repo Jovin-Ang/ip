@@ -48,6 +48,7 @@ public class UnmarkCommand extends Command {
         }
         try {
             int taskNumber = Integer.parseInt(arguments);
+            assert taskNumber > 0 : "Task number should be greater than 0";
             taskList.markTaskAsIncomplete(taskNumber - 1);
             ioHandler.send("Unmarked task " + taskNumber + " as completed.");
         } catch (IllegalTaskStateChangeException e) {
