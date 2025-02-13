@@ -122,14 +122,15 @@ public class ChatBot implements IoHandler {
 
         // Execute command if it exists, or handle unknown command
         Command cmd = commands.get(command);
-        if (cmd != null) {
-            try {
-                cmd.execute(arguments);
-            } catch (InvalidCommandSyntaxException e) {
-                this.send("Invalid command format: " + e.getMessage() + "\nUsage: " + cmd.getCommandUsage());
-            }
-        } else {
+        if (cmd == null) {
             this.send("Sorry. I don't understand, please try again.");
+            return;
+        }
+
+        try {
+            cmd.execute(arguments);
+        } catch (InvalidCommandSyntaxException e) {
+            this.send("Invalid command format: " + e.getMessage() + "\nUsage: " + cmd.getCommandUsage());
         }
     }
 
