@@ -48,6 +48,9 @@ public class DeleteCommand extends Command {
         try {
             int taskNumber = Integer.parseInt(arguments);
             Task deletedTask = taskList.removeTask(taskNumber - 1);
+
+            assert deletedTask != null : "Task to be deleted should not be null.";
+
             ioHandler.send("Noted. I've removed this task: \n  "
                     + deletedTask.getDetails() + "\nNow you have "
                     + taskList.getTotalTasks() + " tasks in the list.");

@@ -62,6 +62,9 @@ public class DeadlineCommand extends Command {
             throw new InvalidCommandSyntaxException("Invalid date format! Use 'yyyy-MM-dd' or 'yyyy-MM-dd HH:mm'.");
         }
 
+        assert deadline != null : "Deadline should not be null";
+        assert !parts[0].isEmpty() : "Task description should not be empty";
+
         DeadlineTask newDeadlineTask = new DeadlineTask(parts[0], deadline);
         taskList.addTask(newDeadlineTask);
         ioHandler.send("Got it. I've added this task:\n  "
