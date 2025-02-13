@@ -38,13 +38,13 @@ class TaskListTest {
     }
 
     @Test
-    void completeTask_emptyList_exceptionThrown() {
-        assertThrows(IndexOutOfBoundsException.class, () -> taskList.completeTask(0));
+    void markTaskAsCompleted_emptyList_exceptionThrown() {
+        assertThrows(IndexOutOfBoundsException.class, () -> taskList.markTaskAsCompleted(0));
     }
 
     @Test
-    void incompleteTask_emptyList_exceptionThrown() {
-        assertThrows(IndexOutOfBoundsException.class, () -> taskList.incompleteTask(0));
+    void markTaskAsIncomplete_emptyList_exceptionThrown() {
+        assertThrows(IndexOutOfBoundsException.class, () -> taskList.markTaskAsIncomplete(0));
     }
 
     @Test
@@ -80,7 +80,7 @@ class TaskListTest {
         void addTasks() throws IllegalTaskStateChangeException {
             taskList.addTask(new ToDoTask("Test ToDo Task"));
             DeadlineTask task2 = new DeadlineTask("Test Deadline Task", LocalDateTime.of(2025, 1, 30, 23, 59));
-            task2.complete();
+            task2.markAsCompleted();
             taskList.addTask(task2);
             taskList.addTask(new EventTask("Test Event Task", LocalDateTime.of(2025, 1, 1, 0, 0),
                     LocalDateTime.of(2025, 1, 31, 23, 59)));
@@ -106,27 +106,27 @@ class TaskListTest {
         }
 
         @Test
-        void completeTask_validIndexIncompleteTask_success() {
-            assertDoesNotThrow(() -> taskList.completeTask(0));
+        void markTaskAsCompleted_validIndexIncompleteTask_success() {
+            assertDoesNotThrow(() -> taskList.markTaskAsCompleted(0));
             String details = taskList.getTaskDetails();
             assertTrue(details.contains("[X] Test ToDo Task"));
         }
 
         @Test
-        void completeTask_validIndexCompleteTask_exceptionThrown() {
-            assertThrows(IllegalTaskStateChangeException.class, () -> taskList.completeTask(1));
+        void markTaskAsCompleted_validIndexCompleteTask_exceptionThrown() {
+            assertThrows(IllegalTaskStateChangeException.class, () -> taskList.markTaskAsCompleted(1));
         }
 
         @Test
-        void incompleteTask_validIndexCompleteTask_success() {
-            assertDoesNotThrow(() -> taskList.incompleteTask(1));
+        void markTaskAsIncomplete_validIndexCompleteTask_success() {
+            assertDoesNotThrow(() -> taskList.markTaskAsIncomplete(1));
             String details = taskList.getTaskDetails();
             assertTrue(details.contains("[ ] Test Deadline Task"));
         }
 
         @Test
-        void incompleteTask_validIndexIncompleteTask_exceptionThrown() {
-            assertThrows(IllegalTaskStateChangeException.class, () -> taskList.incompleteTask(0));
+        void markTaskAsIncomplete_validIndexIncompleteTask_exceptionThrown() {
+            assertThrows(IllegalTaskStateChangeException.class, () -> taskList.markTaskAsIncomplete(0));
         }
 
         @Test

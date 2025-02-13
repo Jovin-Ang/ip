@@ -51,8 +51,8 @@ public class TaskList {
      * @throws IllegalTaskStateChangeException If the task has already been marked as completed.
      * @throws IndexOutOfBoundsException       If the specified index is out of bounds in the task list.
      */
-    public void completeTask(int i) throws IllegalTaskStateChangeException, IndexOutOfBoundsException {
-        this.tasks.get(i).complete();
+    public void markTaskAsCompleted(int i) throws IllegalTaskStateChangeException, IndexOutOfBoundsException {
+        this.tasks.get(i).markAsCompleted();
     }
 
     /**
@@ -62,8 +62,8 @@ public class TaskList {
      * @throws IllegalTaskStateChangeException If the task is already in the incomplete state.
      * @throws IndexOutOfBoundsException       If the specified index is out of bounds in the task list.
      */
-    public void incompleteTask(int i) throws IllegalTaskStateChangeException, IndexOutOfBoundsException {
-        this.tasks.get(i).incomplete();
+    public void markTaskAsIncomplete(int i) throws IllegalTaskStateChangeException, IndexOutOfBoundsException {
+        this.tasks.get(i).markAsIncomplete();
     }
 
     /**
