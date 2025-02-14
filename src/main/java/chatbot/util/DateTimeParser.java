@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Locale;
 
 /**
  * This class provides utility methods for parsing and formatting date and time strings.
@@ -16,7 +17,7 @@ public class DateTimeParser {
     private static final DateTimeFormatter DATE_FORMATTER =
             DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private static final DateTimeFormatter DISPLAY_FORMATTER =
-            DateTimeFormatter.ofPattern("MMM d yyyy, h:mm a");
+            DateTimeFormatter.ofPattern("MMM d yyyy, h:mm a").withLocale(Locale.US);
 
     /**
      * Parses a date/datetime string into LocalDateTime.

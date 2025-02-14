@@ -44,7 +44,7 @@ class EventTaskTest {
 
     @Test
     void testDetailsConversion() {
-        assertEquals("[E][ ] Test Event Task (from: Jan 1 2025, 12:00 am to: Jan 31 2025, 11:59 pm)",
+        assertEquals("[E][ ] Test Event Task (from: Jan 1 2025, 12:00 AM to: Jan 31 2025, 11:59 PM)",
                 task.getDetails());
     }
 
@@ -76,7 +76,7 @@ class EventTaskTest {
 
         @Test
         void testDetailsConversion() {
-            assertEquals("[E][X] Test Event Task (from: Jan 1 2025, 12:00 am to: Jan 31 2025, 11:59 pm)",
+            assertEquals("[E][X] Test Event Task (from: Jan 1 2025, 12:00 AM to: Jan 31 2025, 11:59 PM)",
                     task.getDetails());
         }
     }

@@ -42,7 +42,7 @@ class DeadlineTaskTest {
 
     @Test
     void testDetailsConversion() {
-        assertEquals("[D][ ] Test Deadline Task (by: Jan 30 2025, 11:59 pm)", task.getDetails());
+        assertEquals("[D][ ] Test Deadline Task (by: Jan 30 2025, 11:59 PM)", task.getDetails());
     }
 
     @Test
@@ -73,7 +73,7 @@ class DeadlineTaskTest {
 
         @Test
         void testDetailsConversion() {
-            assertEquals("[D][X] Test Deadline Task (by: Jan 30 2025, 11:59 pm)", task.getDetails());
+            assertEquals("[D][X] Test Deadline Task (by: Jan 30 2025, 11:59 PM)", task.getDetails());
         }
     }
 }

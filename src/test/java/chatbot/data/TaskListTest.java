@@ -144,14 +144,14 @@ class TaskListTest {
         void testDetailsConversion() {
             assertEquals("""
                             1. [T][ ] Test ToDo Task
-                            2. [D][X] Test Deadline Task (by: Jan 30 2025, 11:59 pm)
-                            3. [E][ ] Test Event Task (from: Jan 1 2025, 12:00 am to: Jan 31 2025, 11:59 pm)""",
+                            2. [D][X] Test Deadline Task (by: Jan 30 2025, 11:59 PM)
+                            3. [E][ ] Test Event Task (from: Jan 1 2025, 12:00 AM to: Jan 31 2025, 11:59 PM)""",
                     taskList.getTaskDetails());
         }
 
         @Test
         void testMatchingTaskDetailsConversion_includedKeyword() {
-            assertEquals("2. [D][X] Test Deadline Task (by: Jan 30 2025, 11:59 pm)",
+            assertEquals("2. [D][X] Test Deadline Task (by: Jan 30 2025, 11:59 PM)",
                     taskList.getMatchingTaskDetails("Deadline"));
         }
 
