@@ -45,6 +45,8 @@ public class Shade extends Application {
         controller.setChatBot(CHATBOT_NAME);
 
         // Set up stage
+        primaryStage.setMinHeight(220);
+        primaryStage.setMinWidth(417);
         primaryStage.setTitle(CHATBOT_NAME + " Chatbot");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

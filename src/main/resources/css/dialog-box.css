@@ -1,0 +1,23 @@
+.label {
+    -fx-background-color: rgba(240, 240, 240, 0.9);
+    -fx-font: 16px "Segoe UI";
+    -fx-text-fill: #333333;
+    -fx-background-radius: 8;
+}
+
+.reply-label {
+    -fx-background-color: rgba(230, 240, 250, 0.9);
+    -fx-background-radius: 8;
+}
+
+#displayPicture {
+    /* Shadow effect on image. */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 8, 0.3, 0, 4);
+
+    /* Change size of image. */
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+
+    /* Rotate image clockwise by degrees. */
+    -fx-rotate: 0;
+}

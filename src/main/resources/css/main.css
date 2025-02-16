@@ -1,0 +1,55 @@
+.root {
+    -fx-background-color: rgba(255, 255, 255, 0.8);
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 20, 0.5, 0, 4);
+}
+
+.text-field {
+    -fx-background-color: rgba(255, 255, 255, 0.85);
+    -fx-background-radius: 12;
+    -fx-font: 20px "Segoe UI";
+    -fx-padding: 8;
+}
+
+.button {
+    -fx-background-color: linear-gradient(to bottom, #0078d4, #005a9e);
+    -fx-background-radius: 6;
+    -fx-text-fill: white;
+    -fx-font: bold 16px "Segoe UI";
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 4, 0.2, 0, 2);
+    -fx-cursor: hand;
+    -fx-padding: 8 16;
+    -fx-transition: background-color 200ms ease, -fx-font-size 200ms ease;
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(to bottom, #005a9e, #004578);
+    -fx-font-size: 18px;
+}
+
+.button:pressed {
+    -fx-background-color: linear-gradient(to bottom, #003f63, #002f4d);
+    -fx-font-size: 20px;
+}
+
+.scroll-pane,
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: rgba(0, 120, 212, 0.6);
+    -fx-background-radius: 1em;
+}
+
+/* Hides the increment and decrement buttons. */
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-pref-height: 0;
+    -fx-opacity: 0;
+}
