@@ -4,7 +4,7 @@
 
 Shade Chatbot is an interactive task management assistant designed to help you stay organized. It supports adding tasks, setting deadlines, scheduling events, and managing your task list efficiently. With its simple commands and intuitive interface, Shade Chatbot is your personal productivity companion.
 
-> [!NOTE]
+> **Note:**  
 > Words in angle brackets are the parameters to be supplied by the user.  
 > e.g. in `todo <task>`, `<task>` is a parameter which can be used as `todo Water the plants`.
 > 
@@ -41,7 +41,7 @@ The `deadline` command allows you to add a task with a specific due date (and op
 
 Usage: `deadline <task> /by <YYYY-MM-DD> [HH:mm]`
 
-> [!TIP]
+> **TIP:**  
 > If no time is provided, it will default to 23:59.
 
 Example
@@ -62,7 +62,7 @@ The `event` command allows you to schedule an event with a start and end date/ti
 
 Usage: `event <task> /from <YYYY-MM-DD> [HH:mm] /to <YYYY-MM-DD> [HH:mm]`
 
-> [!TIP]
+> **TIP:**  
 > If no time is provided, it will default to 23:59.
 
 Example
@@ -151,6 +151,6 @@ Task data are saved in the hard disk automatically after the program closes. The
 ## Editing the data file
 Task data are saved automatically as a JSON file [JAR file location]/data/tasks.json. Advanced users are welcome to update data directly by editing that data file.
 
-> [!CAUTION]
+> **CAUTION:**  
 > If your changes to the data file makes its format invalid, Shade will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.
 > Furthermore, certain edits can cause Shade to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
