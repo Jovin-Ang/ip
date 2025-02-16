@@ -16,7 +16,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.11.0'
 
     def platforms = ["win", "linux", "mac"]
-    def javafxDependency = ["javafx-controls", "javafx-fxml"]
+    def javafxDependency = ["javafx-controls", "javafx-fxml", "javafx-graphics"]
 
     for (plt in platforms) {
         for (dep in javafxDependency) {
