@@ -81,7 +81,7 @@ public class ChatBot implements IoHandler {
             this.taskList = storage.load();
         } catch (StorageOperationException e) {
             this.send("Failed to load tasks: " + e.getMessage());
-            throw new RuntimeException(e);
+            this.taskList = new TaskList();
         }
         commands.put("help", new HelpCommand(this, commands));
         commands.put("quit", new QuitCommand(this));
