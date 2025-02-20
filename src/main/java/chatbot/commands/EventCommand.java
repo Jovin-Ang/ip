@@ -1,6 +1,7 @@
 package chatbot.commands;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 
 import chatbot.data.TaskList;
 import chatbot.data.tasks.EventTask;
@@ -51,10 +52,16 @@ public class EventCommand extends Command {
         }
 
         // Split the arguments into task description, start date and end date
-        String[] parts = arguments.split(" /from | /to ", 3);
+        String[] parts = Arrays.stream(arguments.split(" /from | /to ", 3))
+                .map(String::trim)
+                .toArray(String[]::new);
 
         if (parts.length != 3) {
             throw new InvalidCommandSyntaxException("Expected 3 arguments, only got " + parts.length + ".");
+        }
+
+        if (parts[0].isEmpty()) {
+            throw new InvalidCommandSyntaxException("Uh oh, task should not be empty!");
         }
 
         LocalDateTime start;

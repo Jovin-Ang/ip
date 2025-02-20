@@ -1,6 +1,7 @@
 package chatbot.commands;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 
 import chatbot.data.TaskList;
 import chatbot.data.tasks.DeadlineTask;
@@ -49,10 +50,16 @@ public class DeadlineCommand extends Command {
         }
 
         // Split the arguments into task description and deadline
-        String[] parts = arguments.split(" /by ", 2);
+        String[] parts = Arrays.stream(arguments.split(" /by ", 2))
+                .map(String::trim)
+                .toArray(String[]::new);
 
         if (parts.length != 2) {
             throw new InvalidCommandSyntaxException("Expected 2 arguments, only got " + parts.length + ".");
+        }
+
+        if (parts[0].isEmpty()) {
+            throw new InvalidCommandSyntaxException("Uh oh, task should not be empty!");
         }
 
         LocalDateTime deadline;

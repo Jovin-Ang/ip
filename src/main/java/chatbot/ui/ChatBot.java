@@ -118,7 +118,7 @@ public class ChatBot implements IoHandler {
     void processInput(String input) {
         String[] parts = input.split(" ", 2); // Split into command and arguments
         String command = parts[0]; // First word is the command
-        String arguments = (parts.length > 1) ? parts[1] : ""; // Arguments string or empty
+        String arguments = (parts.length > 1) ? parts[1].trim() : ""; // Arguments string or empty
 
         // Execute command if it exists, or handle unknown command
         Command cmd = commands.get(command);
